@@ -38,7 +38,20 @@ app.get('/api/users', (request, response) => {
 })
 
 app.post('/api/users', (request, response) => {
-  //post request
+  const body = request.body
+
+  if (body.content === undefined) {
+    return response.status(400).json({ error: 'content missing' })
+  }
+
+  const note = new User({
+    username: body.username,
+    password: body.password
+  })
+
+  user.save().then(savedNote => {
+    response.json(savedNote)
+  })
 })
 
 app.delete('/api/users/:id', (request, response, next) => {
