@@ -14,11 +14,15 @@ mongoose.connect(url)
     console.log('error connecting to MongoDB:', error.message)
   })
 
-const userDataSchema = new mongoose.Schema({
-  userID: String
+const trailSchema = new mongoose.Schema({
+  name: String,
+  angels: {
+    type: Array,
+    required: false
+  }
 })
 
-userDataSchema.set('toJSON', {
+trailSchema.set('toJSON', {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
@@ -26,4 +30,4 @@ userDataSchema.set('toJSON', {
   }
 })
 
-module.exports = mongoose.model('UserData', userDataSchema)
+module.exports = mongoose.model('Trail', trailSchema)

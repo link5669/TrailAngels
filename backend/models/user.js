@@ -24,7 +24,7 @@ const userSchema = new mongoose.Schema({
       return this.isAngel === true
     }
   },
-  name: {
+  fullName: {
     type: String,
     required: function() {
       return this.isAngel === true

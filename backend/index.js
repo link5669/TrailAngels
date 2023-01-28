@@ -4,6 +4,8 @@ const cors = require('cors')
 require('dotenv').config()
 
 const User = require('./models/user')
+const UserData = require('./models/userdata')
+const Trail = require('./models/trail')
 
 const requestLogger = (request, response, next) => {
   console.log('Method:', request.method)
@@ -30,10 +32,31 @@ app.use(express.json())
 app.use(requestLogger)
 app.use(express.static('build'))
 
-
 app.get('/api/users', (request, response) => {
   User.find({}).then(notes => {
     response.json(notes)
+  })
+})
+
+app.get('/api/trails', (request, response) => {
+  Trail.find({}).then(trail => {
+    response.json(trail)
+  })
+})
+
+app.post('/api/trails', (request, response) => {
+  const body = request.body
+
+  if (body.name === undefined) {
+    return response.status(400).json({ error: 'missing data' })
+  }
+
+  const trail = new Trail({
+    name: body.name
+  })
+
+  trail.save().then(savedTrail => {
+    response.json(savedTrail)
   })
 })
 
@@ -47,7 +70,9 @@ app.post('/api/users', (request, response) => {
   const user = new User({
     username: body.username,
     password: body.password,
-    isAngel: body.isAngel
+    isAngel: body.isAngel,
+    trail: body.trail,
+    fullName: body.fullName
   })
 
   user.save().then(savedNote => {
@@ -56,7 +81,7 @@ app.post('/api/users', (request, response) => {
 })
 
 app.get('api/users', (request, response) => {
-    User.findById(request.params.id)
+  User.findById(request.params.id)
     .then(user => {
       if (user) {
         response.json(user)
@@ -68,7 +93,7 @@ app.get('api/users', (request, response) => {
 })
 
 app.delete('/api/users/:id', (request, response, next) => {
-    User.findByIdAndRemove(request.params.id)
+  User.findByIdAndRemove(request.params.id)
     .then(result => {
       response.status(204).end()
     })
@@ -76,19 +101,39 @@ app.delete('/api/users/:id', (request, response, next) => {
 })
 
 app.put('/api/users/:id', (request, response, next) => {
-    const body = request.body
+  const body = request.body
 
-    const user = {
-      username: body.username,
-      password: body.password,
-      isAngel: body.isAngel
+  const user = {
+    username: body.username,
+    password: body.password,
+    isAngel: body.isAngel,
+    trail: body.trail,
+    fullName: body.fullName
+  }
+
+  User.findByIdAndUpdate(request.params.id, user, { new: true })
+    .then(updatedUser => {
+      response.json(updatedUser)
+    })
+    .catch(error => next(error))
+})
+
+app.put('/api/trails/:id', (request, response, next) => {
+  const body = request.body
+
+  Trail.findById(request.params.id, function (err, docs) {
+    if (err) {
+      console.log(err);
     }
-  
-    User.findByIdAndUpdate(request.params.id, user, { new: true })
-      .then(updatedUser => {
-        response.json(updatedUser)
-      })
-      .catch(error => next(error))
+    else {
+      docs.angels.push(body.newAngel)
+      Trail.findByIdAndUpdate(request.params.id, docs, { new: true })
+        .then(updatedTrail => {
+          response.json(updatedTrail)
+        })
+        .catch(error => next(error))
+    }
+  })
 })
 
 app.use(unknownEndpoint)
