@@ -46,7 +46,8 @@ app.post('/api/users', (request, response) => {
 
   const user = new User({
     username: body.username,
-    password: body.password
+    password: body.password,
+    isAngel: body.isAngel
   })
 
   user.save().then(savedNote => {
@@ -80,6 +81,7 @@ app.put('/api/users/:id', (request, response, next) => {
     const user = {
       username: body.username,
       password: body.password,
+      isAngel: body.isAngel
     }
   
     User.findByIdAndUpdate(request.params.id, user, { new: true })
