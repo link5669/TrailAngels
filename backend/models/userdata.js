@@ -15,7 +15,23 @@ mongoose.connect(url)
   })
 
 const userDataSchema = new mongoose.Schema({
-  userID: String
+  userID: String,
+  offerFoodWater: {
+    type: Boolean,
+    required: false
+  },
+  offerFirstAid: {
+    type: Boolean,
+    required: false
+  },
+  offerRides: {
+    type: Boolean,
+    required: false
+  },
+  offerHousing: {
+    type: Boolean,
+    required: false
+  }
 })
 
 userDataSchema.set('toJSON', {
