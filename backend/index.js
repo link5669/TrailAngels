@@ -41,15 +41,11 @@ app.post('/api/users', (request, response) => {
   //post request
 })
 
-app.get('/api/notes/:id', (request, response, next) => {
-  //get request
-})
-
-app.delete('/api/notes/:id', (request, response, next) => {
+app.delete('/api/users/:id', (request, response, next) => {
   //delete request
 })
 
-app.put('/api/notes/:id', (request, response, next) => {
+app.put('/api/users/:id', (request, response, next) => {
   //put request
 })
 
