@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import TrailMap from './TrailMap'
+import TrailMap from './components/TrailMap'
 import appalachian from './data/appalachian.geojson'
 
 function App() {

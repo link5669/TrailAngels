@@ -1,5 +1,5 @@
 import mapboxgl from 'mapbox-gl';
-import { myKey } from './private/key';
+import { myKey } from '../private/key';
 import { useRef, useEffect, useState } from 'react'
 
 export default function GenerateMap(props) {
@@ -60,6 +60,28 @@ export default function GenerateMap(props) {
             'line-width': 8
           }
         })
+      }
+
+      /**
+       * Helper method for loading angel markers onto the map
+       */
+      const loadMarkers = (geoJSON) => {
+        const points = Object.keys(geoJSON);
+        
+        // create a marker for each feature in the angel location geoJSON
+        for (const feature of geoJSONfeatures) {
+          const el = document.createElement('div');
+          el.className= 'marker';
+          new mapboxgl.Marker(el)
+            .setLngLat(feature.geometry.coordinates)
+            .setPopup(
+              new mapboxgl.Popup({offset: 25})
+              .setHTML(
+                `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+              )
+            )
+            .addTo(map)
+        }
       }
 
       return (
