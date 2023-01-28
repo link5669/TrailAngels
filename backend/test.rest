@@ -1,0 +1,6 @@
+PUT http://localhost:3003/api/trails/63d57b4dd0af28e8e6b3513f
+Content-Type: application/json
+
+{
+  "newAngel": "aaaab"
+}
