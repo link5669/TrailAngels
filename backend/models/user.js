@@ -17,7 +17,19 @@ mongoose.connect(url)
 const userSchema = new mongoose.Schema({
   username: String,
   password: String,
-  isAngel: Boolean
+  isAngel: Boolean,
+  trail: {
+    type: String, 
+    required: function() {
+      return this.isAngel === true
+    }
+  },
+  name: {
+    type: String,
+    required: function() {
+      return this.isAngel === true
+    }
+  }
 })
 
 userSchema.set('toJSON', {
