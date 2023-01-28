@@ -40,11 +40,11 @@ app.get('/api/users', (request, response) => {
 app.post('/api/users', (request, response) => {
   const body = request.body
 
-  if (body.content === undefined) {
-    return response.status(400).json({ error: 'content missing' })
+  if (body.username === undefined || body.password === undefined) {
+    return response.status(400).json({ error: 'missing data' })
   }
 
-  const note = new User({
+  const user = new User({
     username: body.username,
     password: body.password
   })
@@ -54,12 +54,39 @@ app.post('/api/users', (request, response) => {
   })
 })
 
+app.get('api/users', (request, response) => {
+    User.findById(request.params.id)
+    .then(user => {
+      if (user) {
+        response.json(user)
+      } else {
+        response.status(404).end()
+      }
+    })
+    .catch(error => next(error))
+})
+
 app.delete('/api/users/:id', (request, response, next) => {
-  //delete request
+    User.findByIdAndRemove(request.params.id)
+    .then(result => {
+      response.status(204).end()
+    })
+    .catch(error => next(error))
 })
 
 app.put('/api/users/:id', (request, response, next) => {
-  //put request
+    const body = request.body
+
+    const user = {
+      username: body.username,
+      password: body.password,
+    }
+  
+    User.findByIdAndUpdate(request.params.id, user, { new: true })
+      .then(updatedUser => {
+        response.json(updatedUser)
+      })
+      .catch(error => next(error))
 })
 
 app.use(unknownEndpoint)
