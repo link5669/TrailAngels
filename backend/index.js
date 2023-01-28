@@ -77,6 +77,12 @@ app.post('/api/users', (request, response) => {
 
   user.save().then(savedNote => {
     response.json(savedNote)
+    const userData = new UserData({
+      userID: savedNote._id
+    })
+    userData.save().then(savedUserData => {
+      response.json(savedUserData)
+    })
   })
 })
 
@@ -134,6 +140,10 @@ app.put('/api/trails/:id', (request, response, next) => {
         .catch(error => next(error))
     }
   })
+})
+
+app.put('/api/users/:id', (request, response, next) => {
+  //TODO update user data via userData model
 })
 
 app.use(unknownEndpoint)
