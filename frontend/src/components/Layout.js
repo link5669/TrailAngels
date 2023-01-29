@@ -3,6 +3,10 @@ import { Outlet, Link } from "react-router-dom";
 import '../styles/Layout.css'
 
 const Layout = () => {
+    let username
+    if (window.localStorage.getItem('loggedUser') != null) { 
+        username = "something"
+    }
     return (
         <>
             <nav>
@@ -11,6 +15,7 @@ const Layout = () => {
                         <Link to="/"><h1>Trail Magic</h1></Link>
                     </li>
                     <li>
+                        <p>{username}</p>
                         <Link to="/dashboard">Dashboard</Link>
                     </li>
                 </ul>
