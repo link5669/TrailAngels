@@ -36,6 +36,7 @@ const Dashboard = forwardRef((props, ref) => {
       toggleShelter: toggleShelter
     }
   })
+  return (
   <>
       <h2>Dashboard</h2>
       <label>
