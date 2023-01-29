@@ -2,10 +2,19 @@ import mapboxgl from 'mapbox-gl';
 import { myKey } from '../private/key';
 import { useRef, useEffect, useState } from 'react'
 import '../styles/TrailMap.css'
+import { getAll } from '../services/markers'
 
+
+
+mapboxgl.accessToken = myKey;
+
+
+/**
+ * 
+ * @param {*} props trailGeoJSON is a geoJSON with trail data to be loaded onto the map, and markerGeoJSON is a geoJSON with Marker coordinates
+ * @returns 
+ */
 export default function GenerateMap(props) {
-
-  mapboxgl.accessToken = myKey;
 
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -21,7 +30,6 @@ export default function GenerateMap(props) {
       center: [lng, lat],
       zoom: zoom
     });
-    console.log(map.style)
   });
 
   useEffect(() => {
@@ -34,7 +42,10 @@ export default function GenerateMap(props) {
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
     });
-  })
+    getAll().then((response) => {
+      loadMarkers(response)
+    })
+  },[])
 
   /**
    * Helper method for adding a trail to the map.
@@ -61,31 +72,33 @@ export default function GenerateMap(props) {
     })
   }
 
-  /**
-   * Helper method for loading angel markers onto the map
-   */
-  const loadMarkers = (geoJSON) => {
-    const points = Object.keys(geoJSON);
+      /**
+       * Helper method for loading angel markers onto the map
+       */
+      const loadMarkers = (geoJSON) => {
+        const points = Object.keys(geoJSON);
+        
+        // create a marker for each feature in the angel location geoJSON
+        for (const feature of geoJSON.features) {
+          console.log("FEATURE")
+          console.log(feature)
+          const el = document.createElement('div');
+          el.className= 'marker';
+          new mapboxgl.Marker(el)
+            .setLngLat(feature.geometry.coordinates)
+            // .setPopup(
+            //   new mapboxgl.Popup({offset: 25})
+            //   .setHTML(
+            //     `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+            //   )
+            // )
+            .addTo(map.current)
+        }
+      }
 
-    // create a marker for each feature in the angel location geoJSON
-    for (const feature of geoJSON.features) {
-      const el = document.createElement('div');
-      el.className = 'marker';
-      new mapboxgl.Marker(el)
-        .setLngLat(feature.geometry.coordinates)
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 })
-            .setHTML(
-              `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-            )
-        )
-        .addTo(map)
-    }
-  }
-
-  return (
-    <div>
-      <div ref={mapContainer} className="map-container" />
-    </div>
-  );
+      return (
+        <div>
+            <div ref={mapContainer} className="map-container" />
+        </div>
+      );
 }

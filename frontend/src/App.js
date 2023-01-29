@@ -20,6 +20,10 @@ function App() {
   // }
   return (
     <div className="App">
+      <h1>Trail Magic</h1>
+
+
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
