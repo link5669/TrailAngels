@@ -6,8 +6,8 @@ Content-Type: application/json
   "geometry": {
     "type": "Point",
     "coordinates": {
-        "latitude": "13.404954", 
-        "longitude": "52.520008"
+        "latitude": "41.8261716", 
+        "longitude": "-71.4073375"
     }
   }
 }

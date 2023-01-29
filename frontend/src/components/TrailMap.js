@@ -2,6 +2,7 @@ import mapboxgl from 'mapbox-gl';
 import { myKey } from '../private/key';
 import { useRef, useEffect, useState } from 'react'
 import '../styles/TrailMap.css'
+import { getAll } from '../services/markers'
 
 /**
  * 
@@ -39,7 +40,10 @@ export default function GenerateMap(props) {
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
     });
-  })
+    getAll().then((response) => {
+      loadMarkers(response)
+    })
+  },[])
 
   /**
    * Helper method for adding a trail to the map.
@@ -66,31 +70,31 @@ export default function GenerateMap(props) {
     })
   }
 
-  /**
-   * Helper method for loading angel markers onto the map
-   */
-  const loadMarkers = (geoJSON) => {
-    const points = Object.keys(geoJSON);
-
-    // create a marker for each feature in the angel location geoJSON
-    for (const feature of geoJSON.features) {
-      const el = document.createElement('div');
-      el.className = 'marker';
-      new mapboxgl.Marker(el)
-        .setLngLat(feature.geometry.coordinates)
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 })
-            .setHTML(
-              `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+      /**
+       * Helper method for loading angel markers onto the map
+       */
+      const loadMarkers = (geoJSON) => {
+        const points = Object.keys(geoJSON);
+        
+        // create a marker for each feature in the angel location geoJSON
+        for (const feature of geoJSON.features) {
+          const el = document.createElement('div');
+          el.className= 'marker';
+          new mapboxgl.Marker(el)
+            .setLngLat(feature.geometry.coordinates)
+            .setPopup(
+              new mapboxgl.Popup({offset: 25})
+              .setHTML(
+                `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+              )
             )
-        )
-        .addTo(map)
-    }
-  }
+            .addTo(map.current)
+        }
+      }
 
-  return (
-    <div>
-      <div ref={mapContainer} className="map-container" />
-    </div>
-  );
+      return (
+        <div>
+            <div ref={mapContainer} className="map-container" />
+        </div>
+      );
 }

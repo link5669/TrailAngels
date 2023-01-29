@@ -75,8 +75,8 @@ app.post('/api/locations', (request, response) => {
     geometry: {
       type: body.geometry.type,
       coordinates: [{
-        latitude: body.geometry.coordinates.latitude,
-        longitude: body.geometry.coordinates.longitude
+        latitude: body.geometry.coordinates.longitude,
+        longitude: body.geometry.coordinates.latitude
       }]
     }
   })
