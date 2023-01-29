@@ -145,7 +145,6 @@ const GenerateMap = forwardRef((props, ref) => {
       <div ref={mapContainer} className="map-container" />
     </div>
   );
-}
 })
 
 export default GenerateMap;
