@@ -8,9 +8,6 @@ const SignUp = () => {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/"></Link>
-                    </li>
-                    <li>
                         <Link to="/backpacker-signup">Backpacker</Link>
                     </li>
                     <li>

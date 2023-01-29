@@ -25,7 +25,6 @@ const Home = () => {
                 <div className="signup-buttons">
                     <Routes>
                         <Route path="/" element={<SignUp />}>
-                            <Route index element={<Empty />} />
                             <Route path="backpacker-signup" element={<BackpackerSignUp />} />
                             <Route path="angel-signup" element={<AngelSignUp />} />
                             <Route path="login" element={<Login />} />
