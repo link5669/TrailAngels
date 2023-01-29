@@ -1,6 +1,6 @@
 
 import React, {useState} from 'react'
-import create from '../services/users'
+import { create } from '../services/users'
 import { useNavigate } from 'react-router-dom'
 
 export default function AngelSignUp() {
@@ -26,7 +26,6 @@ export default function AngelSignUp() {
             && email != ""
             && pass != ""
             && pass == confirmPass) {
-                console.log("aa")
             create({username: email, password: pass})
             routeChange()
             //route to next page

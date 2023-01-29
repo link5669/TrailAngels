@@ -1,7 +1,3 @@
-.map-container {
-    height: 500px;
-}
-
 .marker {
     background-image: url('pin.jpg');
     background-size: cover;

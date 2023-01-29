@@ -5,7 +5,7 @@ import '../styles/Layout.css'
 const Layout = () => {
     let username
     if (window.localStorage.getItem('loggedUser') != null) {
-        username = "something"
+        username = getUsername(window.localStorage.getItem('loggedUser'))
     }
     return (
         <>

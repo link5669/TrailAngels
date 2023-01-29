@@ -67,6 +67,17 @@ app.get('/api/locations', (request, response) => {
   })
 })
 
+app.get('/api/username/:id', (request, response) => {
+  User.findById(request.params.id, function (err, docs) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      response.json(docs)
+    }
+  })
+})
+
 app.post('/api/locations', (request, response) => {
   const body = request.body
   const location = new Location({

@@ -17,8 +17,9 @@ const getAll = () => {
                 coordinates: [Number(data[i].geometry.coordinates[0].longitude), Number(data[i].geometry.coordinates[0].latitude)]
             },
             properties: {
-                title: 'test',
-                description: 'test'
+                title: data[i].properties.title,
+                description: data[i].properties.description,
+                type: data[i].properties.type
             }
         })
     }
