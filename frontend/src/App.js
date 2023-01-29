@@ -43,9 +43,6 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-      <div className="web-container">
-        <TrailMap trailGeoJSON={appalachian} ref={filterRef}></TrailMap>
-      </div>
     </div>
   );
 }
