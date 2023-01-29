@@ -31,11 +31,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="dashboard" element={<Login />} />
             <Route path="angel-signup" element={<AngelSignUp />} />
             <Route path="backpacker-signup" element={<BackpackerSignUp />} />
             <Route path="angel-signup" element={<AngelSignUp />} />
-            <Route path="login" element={<Login />} />
             <Route path="*" element={<NoPage />} />
             <Route path="angel-specs" element={<AngelSpecs />} />
           </Route>

@@ -5,16 +5,15 @@ import '../styles/SignUp.css'
 const SignUp = () => {
     return (
         <>
-            <nav>
+            <nav className="signup">
                 <ul>
                     <li>
+                        <img src="" alt="" />
                         <Link to="/backpacker-signup">Backpacker</Link>
                     </li>
                     <li>
+                        <img src="" alt="" />
                         <Link to="/angel-signup">Trail Angel</Link>
-                    </li>
-                    <li>
-                        <Link to="/login">Log In</Link>
                     </li>
                 </ul>
             </nav>

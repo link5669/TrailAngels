@@ -9,9 +9,10 @@ import BackpackerSignUp from './BackpackerSignUp.js'
 const Home = () => {
     return (
         <div className="hero-section">
-            <div className="section-column-1">
+            <div className="section-column-blank">
             </div>
             <div className="section-column">
+
                 <h1>Feel the spark on your next journey</h1>
                 <p>
                     Little blurb on Trail Angels. And little blurb on backpacking
@@ -27,7 +28,6 @@ const Home = () => {
                         <Route path="/" element={<SignUp />}>
                             <Route path="backpacker-signup" element={<BackpackerSignUp />} />
                             <Route path="angel-signup" element={<AngelSignUp />} />
-                            <Route path="login" element={<Login />} />
                         </Route>
                     </Routes>
                 </div>

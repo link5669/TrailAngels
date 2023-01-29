@@ -1,0 +1,14 @@
+.signup {
+    background-color: red;
+}
+
+.signup ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.signup li {
+    background-color: var(--neutral200);
+    padding: 5em;
+}

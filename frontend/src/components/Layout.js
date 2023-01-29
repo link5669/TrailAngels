@@ -4,7 +4,7 @@ import '../styles/Layout.css'
 
 const Layout = () => {
     let username
-    if (window.localStorage.getItem('loggedUser') != null) { 
+    if (window.localStorage.getItem('loggedUser') != null) {
         username = "something"
     }
     return (
@@ -16,7 +16,7 @@ const Layout = () => {
                     </li>
                     <li>
                         <p>{username}</p>
-                        <Link to="/dashboard">Dashboard</Link>
+                        <Link to="/dashboard">Login</Link>
                     </li>
                 </ul>
             </nav>
