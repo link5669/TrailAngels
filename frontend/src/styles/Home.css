@@ -3,21 +3,23 @@
     background-repeat: no-repeat;
     background-size: 100%;
     display: flex;
-    padding: 5em 0;
+    padding: 3em 0;
 }
 
-.section-column-blank {
-    width: 50%;
-}
 
-.section-column {
-    width: 40%;
+.section-column-text {
+    width: 60%;
     font-size: large;
     color: black;
     padding: 0 5em;
 }
 
-.section-column img {
+.section-column-image {
+    width: 40%;
+    padding: 0 8em;
+}
+
+.section-column-image img {
     width: 100%;
     height: auto;
     border-radius: 1em;

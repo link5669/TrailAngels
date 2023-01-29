@@ -9,13 +9,13 @@ import BackpackerSignUp from './BackpackerSignUp.js'
 const Home = () => {
     return (
         <div className="hero-section">
-            <div className="section-column">
+            <div className="section-column-image">
                 <div className="card">
                     <img src={process.env.PUBLIC_URL + "/" + "hiking-home.jpg"} alt="backpackers hiking on a trail" />
                 </div>
 
             </div>
-            <div className="section-column">
+            <div className="section-column-text">
 
                 <h1>Feel the spark on your next journey</h1>
                 <p>
