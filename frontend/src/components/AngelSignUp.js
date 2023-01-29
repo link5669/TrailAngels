@@ -60,6 +60,12 @@ export default function AngelSignUp() {
                 onChange={(e) => {setConfirmPass(e.target.value)}}
             />
             <h3>When do you offer your service?</h3>
+            <input
+                type="radio" value="year-round"
+            />
+            <input
+                type="radio" value="seasonal"
+            />
         <button type="submit" className="btn btn__primary btn__lg">
             Submit
         </button>

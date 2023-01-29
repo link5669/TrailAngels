@@ -16,6 +16,9 @@ const SignUp = () => {
                     <li>
                         <Link to="/angel-signup">Trail Angel</Link>
                     </li>
+                    <li>
+                        <Link to="/login">Log In</Link>
+                    </li>
                 </ul>
             </nav>
 

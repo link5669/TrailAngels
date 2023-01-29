@@ -8,6 +8,7 @@ import NoPage from './components/NoPage.js'
 import Home from './components/Home.js'
 import Layout from './components/Layout.js'
 import AngelSignUp from './components/AngelSignUp.js'
+import Login from './components/Login'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -15,7 +16,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Empty from './components/Empty.js'
 import BackpackerSignUp from './components/BackpackerSignUp.js'
 
-import Login from './components/Login.js'
 import { useState } from 'react'
 
 function App() {
@@ -34,6 +34,7 @@ function App() {
             <Route path="angel-signup" element={<AngelSignUp />} />
             <Route path="backpacker-signup" element={<BackpackerSignUp />} />
             <Route path="angel-signup" element={<AngelSignUp />} />
+            <Route path="login" element={<Login />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

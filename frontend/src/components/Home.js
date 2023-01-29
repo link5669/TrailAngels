@@ -2,6 +2,7 @@ import '../styles/Home.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import AngelSignUp from './AngelSignUp.js'
 import SignUp from './SignUp.js'
+import Login from './Login'
 import Empty from './Empty.js'
 import BackpackerSignUp from './BackpackerSignUp.js'
 
@@ -27,6 +28,7 @@ const Home = () => {
                             <Route index element={<Empty />} />
                             <Route path="backpacker-signup" element={<BackpackerSignUp />} />
                             <Route path="angel-signup" element={<AngelSignUp />} />
+                            <Route path="login" element={<Login />} />
                         </Route>
                     </Routes>
                 </div>
