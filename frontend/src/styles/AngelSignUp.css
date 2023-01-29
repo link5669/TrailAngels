@@ -1,0 +1,13 @@
+.form-container {
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    background-color: var(--yellow200);
+    border: 15px solid var(--green200);
+    right: 0px;
+    border-radius: 15px;
+}
+
+.name {
+    display: inline-block;
+}
