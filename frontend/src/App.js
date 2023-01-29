@@ -8,6 +8,7 @@ import NoPage from './components/NoPage.js'
 import Home from './components/Home.js'
 import Layout from './components/Layout.js'
 import AngelSignUp from './components/AngelSignUp.js'
+import AngelSpecs from './components/AngelSpecs'
 import Login from './components/Login'
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -36,6 +37,7 @@ function App() {
             <Route path="angel-signup" element={<AngelSignUp />} />
             <Route path="login" element={<Login />} />
             <Route path="*" element={<NoPage />} />
+            <Route path="angel-specs" element={<AngelSpecs />} />
           </Route>
         </Routes>
       </BrowserRouter>
