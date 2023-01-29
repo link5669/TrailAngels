@@ -9,7 +9,11 @@ import BackpackerSignUp from './BackpackerSignUp.js'
 const Home = () => {
     return (
         <div className="hero-section">
-            <div className="section-column-blank">
+            <div className="section-column">
+                <div className="card">
+                    <img src={process.env.PUBLIC_URL + "/" + "hiking-home.jpg"} alt="backpackers hiking on a trail" />
+                </div>
+
             </div>
             <div className="section-column">
 
@@ -22,7 +26,6 @@ const Home = () => {
                     <br></br>
                     <br></br>
                     Spreading Trail Magic among travellers has been a tradition in the outdoor community
-                    for decades. See how Trail Magic can play a role in your life!
                 </p>
                 <div className="signup-buttons">
                     <Routes>

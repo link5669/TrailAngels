@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { useState, createRef, forwardRef, useImperativeHandle } from 'react'
+
+import { useState, forwardRef, useImperativeHandle } from 'react'
+
 
 const Dashboard = forwardRef((props, ref) => {
   const [firstAid, setFirstAid] = useState(false);
@@ -8,25 +10,30 @@ const Dashboard = forwardRef((props, ref) => {
   const [transportation, setTransportation] = useState(false);
   const [shelter, setShelter] = useState(false);
 
+
   const toggleFirstAid = (e) => {
     setFirstAid(!firstAid)
     props.filterRef.current.toggleVisibility("firstAid", firstAid)
   }
+
 
   const toggleFoodWater = (e) => {
     setFoodWater(!foodWater)
     props.filterRef.current.toggleVisibility("foodWater", foodWater)
   }
 
+
   const toggleTransportation = (e) => {
     setTransportation(!transportation)
     props.filterRef.current.toggleVisibility("transportation", transportation)
   }
 
+
   const toggleShelter = (e) => {
     setShelter(!shelter)
     props.filterRef.current.toggleVisibility("shelter", shelter)
   }
+
 
   useImperativeHandle(ref, () => {
     return {
@@ -37,7 +44,7 @@ const Dashboard = forwardRef((props, ref) => {
     }
   })
   return (
-  <>
+    <>
       <h2>Dashboard</h2>
       <label>
         <input onClick={() => toggleFirstAid()} type="checkbox" defaultChecked={true} />
@@ -48,15 +55,16 @@ const Dashboard = forwardRef((props, ref) => {
         Food/Water
       </label>
       <label>
-        <input onClick={() => toggleTransportation()} type="checkbox" defaultChecked={true}/>
+        <input onClick={() => toggleTransportation()} type="checkbox" defaultChecked={true} />
         Transportation
       </label>
       <label>
-        <input onClick={() => toggleShelter()} type="checkbox" defaultChecked={true}/>
+        <input onClick={() => toggleShelter()} type="checkbox" defaultChecked={true} />
         Shelter
       </label>
     </>
   );
 })
+
 
 export default Dashboard
