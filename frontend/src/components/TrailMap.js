@@ -1,26 +1,62 @@
 import mapboxgl, { Marker } from 'mapbox-gl';
 import { myKey } from '../private/key';
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, forwardRef, useImperativeHandle } from 'react'
 import '../styles/TrailMap.css'
 import { getAll } from '../services/markers'
 
-
-
 mapboxgl.accessToken = myKey;
-
 
 /**
  * 
  * @param {*} props trailGeoJSON is a geoJSON with trail data to be loaded onto the map, and markerGeoJSON is a geoJSON with Marker coordinates
  * @returns 
  */
-export default function GenerateMap(props) {
+const GenerateMap = forwardRef((props, ref) => {
 
   const mapContainer = useRef(null);
   const map = useRef(null);
   const [lng, setLng] = useState(-71.4025);
   const [lat, setLat] = useState(41.8268);
   const [zoom, setZoom] = useState(15);
+  
+  const [markers, setMarkers] = useState([])
+  let markerArr = []
+
+  const toggleVisibility = (layer, value) => {
+    console.log(markers)
+    for (const marker of markerArr) {
+      marker.marker.remove()
+    }
+    let currMarkers = []
+    getAll().then((response) => {
+      if (layer == "firstAid") {
+        for (const feature of response.features) {
+          console.log(feature.properties)
+          if (feature.properties.type == "firstAid") {
+            console.log(value)
+            if (value) {
+              console.log(feature, "toggle adding")
+              currMarkers.push(feature)
+            }
+          }
+        }
+      } else if (layer == "foodWater") {
+
+      } else if (layer == "transportation") {
+
+      } else if (layer == "shelter") {
+
+      }
+      loadMarkers(currMarkers)
+    })
+  }
+
+
+  useImperativeHandle(ref, () => {
+    return {
+      toggleVisibility
+    }
+  })
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
@@ -50,7 +86,7 @@ export default function GenerateMap(props) {
       })
     }
     getAll().then((response) => {
-      loadMarkers(response)
+      loadMarkers(response.features)
     })
   }, [])
 
@@ -82,24 +118,25 @@ export default function GenerateMap(props) {
       /**
        * Helper method for loading angel markers onto the map
        */
-      const loadMarkers = (geoJSON) => {
-        const points = Object.keys(geoJSON);
-        
-        // create a marker for each feature in the angel location geoJSON
-        for (const feature of geoJSON.features) {
-          console.log("FEATURE")
-          console.log(feature)
-          const el = document.createElement('div');
-          el.className= `marker`;
-          new mapboxgl.Marker(el)
-            .setLngLat(feature.geometry.coordinates)
-            .setPopup(
-              new mapboxgl.Popup({offset: 25})
-              .setHTML(
-                `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+      const loadMarkers = (markers) => {
+    markers = markers
+    // create a marker for each feature in the angel location geoJSON
+    for (const feature of markers) {
+      console.log("aa")
+      console.log(feature)
+      const el = document.createElement('div');
+      el.className = `marker`;
+      let marker = new mapboxgl.Marker(el)
+        .setLngLat(feature.geometry.coordinates)
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 })
+            .setHTML(
+              `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
               )
             )
             .addTo(map.current)
+      markerArr.push({marker: marker, type: feature.properties.type})
+      console.log(markerArr)
         }
       }
 
@@ -109,3 +146,6 @@ export default function GenerateMap(props) {
     </div>
   );
 }
+})
+
+export default GenerateMap;
