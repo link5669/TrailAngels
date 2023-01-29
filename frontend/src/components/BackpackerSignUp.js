@@ -2,8 +2,8 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { create } from '../services/users'
-
-export default function AngelSignUp() {
+import '../styles/BackpackerSignUp.css'
+export default function BackpackerSignUp() {
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -35,46 +35,59 @@ export default function AngelSignUp() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h3>First Name:</h3>
-            <input
-                type="text"
-                id="input-first-name"
-                autoComplete="off"
-                onChange={(e) => { setFirstName(e.target.value) }}
-            />
-            <h3>Last Name:</h3>
-            <input
-                type="text"
-                id="input-last-name"
-                autoComplete="off"
-                onChange={(e) => { setLastName(e.target.value) }}
-            />
-            <h3>Email:</h3>
-            <input
-                type="text"
-                id="input-email"
-                autoComplete="off"
-                onChange={(e) => { setEmail(e.target.value) }}
-            />
-            <h3>Password:</h3>
-            <input
-                type="password"
-                id="input-password"
-                autoComplete="off"
-                onChange={(e) => { setPass(e.target.value) }}
-            />
-            <h3>Confirm Password:</h3>
-            <input
-                type="password"
-                id="input-password"
-                autoComplete="off"
-                onChange={(e) => { setConfirmPass(e.target.value) }}
-            />
-            <button type="submit" className="submit-angel-signup">
-                Submit
-            </button>
-        </form>
+        <div className="section">
+            <div className="section-column">
+                <div className="card">
+                    <img src={process.env.PUBLIC_URL + "/" + "angel-icon.png"}
+                        alt="backpack icon with a star illustration as the backpack closure" />
+                </div>
+
+            </div>
+            <div className="section-column">
+                <form onSubmit={handleSubmit}>
+                    <h3>First Name:</h3>
+                    <input
+                        type="text"
+                        id="input-first-name"
+                        autoComplete="off"
+                        onChange={(e) => { setFirstName(e.target.value) }}
+                    />
+                    <h3>Last Name:</h3>
+                    <input
+                        type="text"
+                        id="input-last-name"
+                        autoComplete="off"
+                        onChange={(e) => { setLastName(e.target.value) }}
+                    />
+                    <h3>Email:</h3>
+                    <input
+                        type="text"
+                        id="input-email"
+                        autoComplete="off"
+                        onChange={(e) => { setEmail(e.target.value) }}
+                    />
+                    <h3>Password:</h3>
+                    <input
+                        type="password"
+                        id="input-password"
+                        autoComplete="off"
+                        onChange={(e) => { setPass(e.target.value) }}
+                    />
+                    <h3>Confirm Password:</h3>
+                    <input
+                        type="password"
+                        id="input-password"
+                        autoComplete="off"
+                        onChange={(e) => { setConfirmPass(e.target.value) }}
+                    />
+                    <button type="submit" className="submit-angel-signup">
+                        Submit
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
     )
 
 }

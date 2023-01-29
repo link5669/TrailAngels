@@ -8,12 +8,12 @@ const SignUp = () => {
             <nav className="signup">
                 <ul>
                     <li>
-                        <img src="" alt="" />
-                        <Link to="/backpacker-signup">Backpacker</Link>
+                        <img src="" alt="backpack icon with a star illustration as the backpack closure" />
+                        <Link to="/backpacker-signup">Encounter Magic as a Backpacker</Link>
                     </li>
                     <li>
-                        <img src="" alt="" />
-                        <Link to="/angel-signup">Trail Angel</Link>
+                        <img src="" alt="angel icon with star illustrations as jewelry" />
+                        <Link to="/angel-signup">Spread Magic as a Trail Angel</Link>
                     </li>
                 </ul>
             </nav>
