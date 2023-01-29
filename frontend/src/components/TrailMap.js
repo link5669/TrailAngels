@@ -2,6 +2,7 @@ import mapboxgl from 'mapbox-gl';
 import { myKey } from '../private/key';
 import { useRef, useEffect, useState } from 'react'
 import '../styles/TrailMap.css'
+import { getAll } from '../services/markers'
 
 export default function GenerateMap(props) {
   
@@ -66,9 +67,9 @@ export default function GenerateMap(props) {
        */
       const loadMarkers = (geoJSON) => {
         const points = Object.keys(geoJSON);
-        
         // create a marker for each feature in the angel location geoJSON
         for (const feature of geoJSON.features) {
+          console.log(feature)
           const el = document.createElement('div');
           el.className= 'marker';
           new mapboxgl.Marker(el)
@@ -79,13 +80,14 @@ export default function GenerateMap(props) {
                 `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
               )
             )
-            .addTo(map)
+            .addTo(map.current)
         }
       }
 
       return (
         <div>
             <div ref={mapContainer} className="map-container" />
+            <button onClick={() => {getAll().then(data => loadMarkers(data))}}>Load Markers</button>
         </div>
       );
 }
