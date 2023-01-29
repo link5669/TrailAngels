@@ -38,7 +38,7 @@ export default function GenerateMap(props) {
     getAll().then((response) => {
       loadMarkers(response)
     })
-  })
+  },[])
 
   /**
    * Helper method for adding a trail to the map.

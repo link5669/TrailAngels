@@ -16,7 +16,7 @@ function App() {
       <h1>Trail Magic</h1>
 
 
-
+{/* 
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -25,11 +25,11 @@ function App() {
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
 
-      {/* <div className="web-container">
+      <div className="web-container">
         <TrailMap trailGeoJSON={appalachian}></TrailMap>
-      </div> */}
+      </div>
 
     </div>
   );
