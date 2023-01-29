@@ -35,6 +35,9 @@ export default function GenerateMap(props) {
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
     });
+    getAll().then((response) => {
+      loadMarkers(response)
+    })
   })
 
   /**
@@ -80,7 +83,7 @@ export default function GenerateMap(props) {
                 `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
               )
             )
-            .addTo(map)
+            .addTo(map.current)
         }
       }
 
