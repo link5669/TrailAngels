@@ -38,7 +38,7 @@ export default function BackpackerSignUp() {
         <div className="section">
             <div className="section-column">
                 <div className="card">
-                    <img src={process.env.PUBLIC_URL + "/" + "angel-icon.png"}
+                    <img src={process.env.PUBLIC_URL + "/" + "backpack-icon.png"}
                         alt="backpack icon with a star illustration as the backpack closure" />
                 </div>
 

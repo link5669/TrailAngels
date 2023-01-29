@@ -5,6 +5,8 @@
 }
 
 .signup ul {
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -13,6 +15,8 @@
 .signup li {
     display: flex;
     flex-direction: column;
-    background-color: var(--neutral200);
-    width: 45%;
+    background-color: var(--green200);
+    width: 100%;
 }
+
+.signup li img {}

@@ -8,11 +8,13 @@ const SignUp = () => {
             <nav className="signup">
                 <ul>
                     <li>
-                        <img src="" alt="backpack icon with a star illustration as the backpack closure" />
+                        <img src={process.env.PUBLIC_URL + "/" + "backpack-icon.png"}
+                            alt="backpack icon with a star illustration as the backpack closure" />
                         <Link to="/backpacker-signup">Encounter Magic as a Backpacker</Link>
                     </li>
                     <li>
-                        <img src="" alt="angel icon with star illustrations as jewelry" />
+                        <img src={process.env.PUBLIC_URL + "/" + "angel-icon.png"}
+                            alt="angel icon with star illustrations as jewelry" />
                         <Link to="/angel-signup">Spread Magic as a Trail Angel</Link>
                     </li>
                 </ul>
