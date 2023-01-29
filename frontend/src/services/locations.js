@@ -6,4 +6,9 @@ const deleteLocation = (longitude, latitude) => {
     return request.then(response => response.data)
   }
 
-  export default deleteLocation
+  const create = newObject => {
+    const request = axios.post(`${baseUrl}/locations`, newObject)
+    return request.then(response => response.data)
+  }
+
+  export { deleteLocation, create }
