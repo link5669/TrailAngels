@@ -2,6 +2,8 @@ import '../styles/Home.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './Login.js'
 import SignUp from './SignUp.js'
+import Empty from './Empty.js'
+import BackpackerSignUp from './BackpackerSignUp.js'
 
 const Home = () => {
     return (
@@ -20,14 +22,13 @@ const Home = () => {
                     officia deserunt mollit anim id est laborum.
                 </p>
                 <div className="signup-buttons">
-                    
-                        <Routes>
-                            <Route path="/" element={<SignUp />}>
-                                <Route index element={<SignUp />} />
-                                <Route path="backpacker-signup" element={<Login />} />
-                            </Route>
-                        </Routes>
-                    
+                    <Routes>
+                        <Route path="/" element={<SignUp />}>
+                            <Route index element={<Empty />} />
+                            <Route path="backpacker-signup" element={<BackpackerSignUp />} />
+                        </Route>
+                    </Routes>
+
                 </div>
             </div>
 

@@ -9,6 +9,10 @@ import Home from './components/Home.js'
 import Layout from './components/Layout.js'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+
+import Empty from './components/Empty.js'
+import BackpackerSignUp from './components/BackpackerSignUp.js'
+
 import Login from './components/Login.js'
 import { useState } from 'react'
 
@@ -20,15 +24,12 @@ function App() {
   // }
   return (
     <div className="App">
-      <h1>Trail Magic</h1>
-
-
-
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="backpacker-signup" element={<BackpackerSignUp />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

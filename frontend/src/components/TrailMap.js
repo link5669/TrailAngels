@@ -45,7 +45,7 @@ export default function GenerateMap(props) {
     getAll().then((response) => {
       loadMarkers(response)
     })
-  },[])
+  }, [])
 
   /**
    * Helper method for adding a trail to the map.
@@ -72,33 +72,33 @@ export default function GenerateMap(props) {
     })
   }
 
-      /**
-       * Helper method for loading angel markers onto the map
-       */
-      const loadMarkers = (geoJSON) => {
-        const points = Object.keys(geoJSON);
-        
-        // create a marker for each feature in the angel location geoJSON
-        for (const feature of geoJSON.features) {
-          console.log("FEATURE")
-          console.log(feature)
-          const el = document.createElement('div');
-          el.className= `marker-${properties.resource_type}`;
-          new mapboxgl.Marker(el)
-            .setLngLat(feature.geometry.coordinates)
-            .setPopup(
-              new mapboxgl.Popup({offset: 25})
-              .setHTML(
-                `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-              )
-            )
-            .addTo(map.current)
-        }
-      }
+  /**
+   * Helper method for loading angel markers onto the map
+   */
+  const loadMarkers = (geoJSON) => {
+    const points = Object.keys(geoJSON);
 
-      return (
-        <div>
-            <div ref={mapContainer} className="map-container" />
-        </div>
-      );
+    // create a marker for each feature in the angel location geoJSON
+    for (const feature of geoJSON.features) {
+      console.log("FEATURE")
+      console.log(feature)
+      const el = document.createElement('div');
+      el.className = `marker`;
+      new mapboxgl.Marker(el)
+        .setLngLat(feature.geometry.coordinates)
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 })
+            .setHTML(
+              `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+            )
+        )
+        .addTo(map.current)
+    }
+  }
+
+  return (
+    <div>
+      <div ref={mapContainer} className="map-container" />
+    </div>
+  );
 }
