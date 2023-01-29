@@ -17,21 +17,24 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Empty from './components/Empty.js'
 import BackpackerSignUp from './components/BackpackerSignUp.js'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 function App() {
   const [token, setToken] = useState();
-  // console.log("rendering App")
-  // if (!token) {
-  //   return <Login setToken={setToken} />
-  // }
+  const [firstAid, setFirstAid] = useState(false);
+  const [foodWater, setFoodWater] = useState(false);
+  const [transportation, setTransportation] = useState(false);
+  const [shelter, setShelter] = useState(false);
+  
+  const filterRef = createRef()
+  const checkboxRef = createRef()
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="dashboard" element={<Dashboard filterRef={filterRef} ref={checkboxRef}/>} />
             <Route path="angel-signup" element={<AngelSignUp />} />
             <Route path="backpacker-signup" element={<BackpackerSignUp />} />
             <Route path="angel-signup" element={<AngelSignUp />} />
@@ -41,10 +44,11 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-{/* 
+
       <div className="web-container">
-        <TrailMap trailGeoJSON={appalachian}></TrailMap>
-      </div> */}
+        <TrailMap trailGeoJSON={appalachian} ref={filterRef}></TrailMap>
+        <button onClick={() => filterRef.current.toggleVisibility("firstAid", true)}>test</button>
+      </div> 
 
     </div>
   );
