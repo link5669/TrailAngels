@@ -4,14 +4,17 @@ import { useRef, useEffect, useState } from 'react'
 import '../styles/TrailMap.css'
 import { getAll } from '../services/markers'
 
+
+
+mapboxgl.accessToken = myKey;
+
+
 /**
  * 
  * @param {*} props trailGeoJSON is a geoJSON with trail data to be loaded onto the map, and markerGeoJSON is a geoJSON with Marker coordinates
  * @returns 
  */
 export default function GenerateMap(props) {
-
-  mapboxgl.accessToken = myKey;
 
   const mapContainer = useRef(null);
   const map = useRef(null);
@@ -27,7 +30,6 @@ export default function GenerateMap(props) {
       center: [lng, lat],
       zoom: zoom
     });
-    console.log(map.style)
   });
 
   useEffect(() => {
@@ -78,16 +80,18 @@ export default function GenerateMap(props) {
         
         // create a marker for each feature in the angel location geoJSON
         for (const feature of geoJSON.features) {
+          console.log("FEATURE")
+          console.log(feature)
           const el = document.createElement('div');
           el.className= 'marker';
           new mapboxgl.Marker(el)
             .setLngLat(feature.geometry.coordinates)
-            .setPopup(
-              new mapboxgl.Popup({offset: 25})
-              .setHTML(
-                `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-              )
-            )
+            // .setPopup(
+            //   new mapboxgl.Popup({offset: 25})
+            //   .setHTML(
+            //     `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+            //   )
+            // )
             .addTo(map.current)
         }
       }
