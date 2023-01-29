@@ -6,9 +6,9 @@ import { getUsername } from '../services/users'
 
 const Layout = () => {
     let username
-    if (window.localStorage.getItem('loggedUser') != null) {
-        username = getUsername(window.localStorage.getItem('loggedUser'))
-    }
+    //if (window.localStorage.getItem('loggedUser') != null) {
+      //  username = getUsername(window.localStorage.getItem('loggedUser'))
+    //}
     return (
         <>
             <nav>
@@ -17,7 +17,7 @@ const Layout = () => {
                         <Link to="/"><h1>Trail Magic</h1></Link>
                     </li>
                     <li>
-                        <p>{username}</p>
+                        /*<p>{username}</p>*/
                         <Link to="/dashboard">Login</Link>
                     </li>
                 </ul>

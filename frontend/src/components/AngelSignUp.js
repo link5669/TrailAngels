@@ -26,7 +26,7 @@ export default function AngelSignUp() {
             && email != ""
             && pass != ""
             && pass == confirmPass) {
-            create({username: email, password: pass})
+            create({username: email, password: pass, isAngel: true})
             routeChange()
             //route to next page
         }
