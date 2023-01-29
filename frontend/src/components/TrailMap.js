@@ -3,6 +3,11 @@ import { myKey } from '../private/key';
 import { useRef, useEffect, useState } from 'react'
 import '../styles/TrailMap.css'
 
+/**
+ * 
+ * @param {*} props trailGeoJSON is a geoJSON with trail data to be loaded onto the map, and markerGeoJSON is a geoJSON with Marker coordinates
+ * @returns 
+ */
 export default function GenerateMap(props) {
   
   mapboxgl.accessToken = myKey;
@@ -55,7 +60,7 @@ export default function GenerateMap(props) {
             'line-cap': 'round'
           },
           'paint': {
-            'line-color': '#888',
+            'line-color': '#ff3500',
             'line-width': 8
           }
         })
