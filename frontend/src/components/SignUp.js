@@ -1,17 +1,17 @@
 import { Outlet, Link } from "react-router-dom";
 
-import '../styles/Layout.css'
+import '../styles/SignUp.css'
 
-const Layout = () => {
+const SignUp = () => {
     return (
         <>
             <nav>
                 <ul>
                     <li>
-                        <Link to="/"><h1>Trail Magic</h1></Link>
+                        <Link to="/backpacker-signup">Backpacker</Link>
                     </li>
                     <li>
-                        <Link to="/dashboard">Dashboard</Link>
+                        <Link to="/angel-signup">Trail Angel</Link>
                     </li>
                 </ul>
             </nav>
@@ -21,4 +21,4 @@ const Layout = () => {
     )
 };
 
-export default Layout;
+export default SignUp;
