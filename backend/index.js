@@ -89,6 +89,11 @@ app.post('/api/locations', (request, response) => {
         latitude: body.geometry.coordinates.longitude,
         longitude: body.geometry.coordinates.latitude
       }]
+     }, 
+    properties: {
+      title: body.properties.title,
+      description: body.properties.description,
+      type: body.properties.type
     }
   })
   location.save().then(savedLocation => {
