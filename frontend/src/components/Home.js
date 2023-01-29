@@ -15,13 +15,14 @@ const Home = () => {
 
                 <h1>Feel the spark on your next journey</h1>
                 <p>
-                    Little blurb on Trail Angels. And little blurb on backpacking
-                    on a long trail. Goes here.
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                    enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                    officia deserunt mollit anim id est laborum.
+                    <strong>Trail Angels</strong> are volunteers who go above and beyond to make life easier for hikers. Spending
+                    weeks or months on a trail can be a lot to bear. Luckily, Trail Angels are there to spread <strong>Trail Magic</strong>: 
+                    food, rides, shelter, and more! Anyone can be a Trail Angel regardless
+                    of backpacking exprience.
+                    <br></br>
+                    <br></br>
+                    Spreading Trail Magic among travellers has been a tradition in the outdoor community
+                    for decades. See how Trail Magic can play a role in your life!
                 </p>
                 <div className="signup-buttons">
                     <Routes>
