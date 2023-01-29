@@ -101,18 +101,20 @@ app.post('/api/users', (request, response) => {
   })
 
   user.save().then(savedNote => {
-    response.json(savedNote)
+    console.log(savedNote._id.toString())
     const userData = new UserData({
-      userID: savedNote._id
+      userID: savedNote._id.toString(),
+      description: body.description
     })
+    console.log(userData)
     userData.save().then(savedUserData => {
       response.json(savedUserData)
     })
   })
 })
 
-app.get('api/users', (request, response) => {
-  User.findById(request.params.id)
+app.get('/api/users/:id', (request, response) => {
+  UserData.find({ userID: request.params.id })
     .then(user => {
       if (user) {
         response.json(user)
@@ -123,30 +125,10 @@ app.get('api/users', (request, response) => {
     .catch(error => next(error))
 })
 
-app.delete('/api/users/:id', (request, response, next) => {
-  User.findByIdAndRemove(request.params.id)
-    .then(result => {
-      response.status(204).end()
-    })
-    .catch(error => next(error))
-})
-
-app.put('/api/users/:id', (request, response, next) => {
-  const body = request.body
-
-  const user = {
-    username: body.username,
-    password: body.password,
-    isAngel: body.isAngel,
-    trail: body.trail,
-    fullName: body.fullName
-  }
-
-  User.findByIdAndUpdate(request.params.id, user, { new: true })
-    .then(updatedUser => {
-      response.json(updatedUser)
-    })
-    .catch(error => next(error))
+app.delete('/api/locations', (request, response) => {
+  Location.find({ userID: request.body.userID, type: request.body.type })
+    .remove()
+    .exec()
 })
 
 app.put('/api/trails/:id', (request, response, next) => {

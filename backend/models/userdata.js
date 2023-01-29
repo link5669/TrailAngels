@@ -11,6 +11,7 @@ mongoose.connect(url)
 
 const userDataSchema = new mongoose.Schema({
   userID: String,
+  description: String,
   offerFoodWater: {
     type: Boolean,
     required: false
@@ -19,11 +20,11 @@ const userDataSchema = new mongoose.Schema({
     type: Boolean,
     required: false
   },
-  offerRides: {
+  offerTransportation: {
     type: Boolean,
     required: false
   },
-  offerHousing: {
+  offerShelter: {
     type: Boolean,
     required: false
   }
