@@ -83,15 +83,15 @@ export default function GenerateMap(props) {
           console.log("FEATURE")
           console.log(feature)
           const el = document.createElement('div');
-          el.className= 'marker';
+          el.className= `marker-${properties.resource_type}`;
           new mapboxgl.Marker(el)
             .setLngLat(feature.geometry.coordinates)
-            // .setPopup(
-            //   new mapboxgl.Popup({offset: 25})
-            //   .setHTML(
-            //     `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-            //   )
-            // )
+            .setPopup(
+              new mapboxgl.Popup({offset: 25})
+              .setHTML(
+                `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
+              )
+            )
             .addTo(map.current)
         }
       }
