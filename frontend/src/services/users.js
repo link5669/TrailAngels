@@ -7,8 +7,15 @@ const create = newObject => {
         if (response.status == 200) {
             window.localStorage.setItem('loggedUser', response.data.userID)
         }
-        console.log(response)
     })
 }
 
-export default create
+const getUsername = (ID) => {
+    const request = axios.get(`${baseUrl}/username/${ID}`)
+    return request.then(response => response.data)
+}
+
+export {
+    create,
+    getUsername
+}
