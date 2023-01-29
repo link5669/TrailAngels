@@ -6,6 +6,7 @@ require('dotenv').config()
 const User = require('./models/user')
 const UserData = require('./models/userdata')
 const Trail = require('./models/trail')
+const Location = require('./models/location')
 
 const requestLogger = (request, response, next) => {
   console.log('Method:', request.method)
@@ -57,6 +58,30 @@ app.post('/api/trails', (request, response) => {
 
   trail.save().then(savedTrail => {
     response.json(savedTrail)
+  })
+})
+
+app.get('/api/locations', (request, response) => {
+  Location.find({}).then(location => {
+    response.json(location)
+  })
+})
+
+app.post('/api/locations', (request, response) => {
+  const body = request.body
+  const location = new Location({
+    userID: body.userID,
+    type: body.type,
+    geometry: {
+      type: body.geometry.type,
+      coordinates: [{
+        latitude: body.geometry.coordinates.latitude,
+        longitude: body.geometry.coordinates.longitude
+      }]
+    }
+  })
+  location.save().then(savedLocation => {
+    response.json(savedLocation)
   })
 })
 

@@ -1,6 +1,13 @@
-PUT http://localhost:3003/api/trails/63d57b4dd0af28e8e6b3513f
+POST http://localhost:3003/api/locations
 Content-Type: application/json
 
 {
-  "newAngel": "aaaab"
+  "type": "Feature",
+  "geometry": {
+    "type": "Point",
+    "coordinates": {
+        "latitude": "13.404954", 
+        "longitude": "52.520008"
+    }
+  }
 }
