@@ -26,6 +26,11 @@ const getAll = () => {
   })
 }
 
+const getUserData = (id) => {
+  const request = axios.get(`${baseUrl}/userData/${id}`)
+  return request.then(response => response.data)
+}
+
 const create = newObject => {
   const request = axios.post(baseUrl, newObject)
   return request.then(response => response.data)
@@ -37,7 +42,8 @@ const update = (id, newObject) => {
 }
 
 export { 
-  getAll, 
+  getAll,
+  getUserData,
   create, 
   update 
 }
