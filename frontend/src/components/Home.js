@@ -26,6 +26,7 @@ const Home = () => {
                     <br></br>
                     <br></br>
                     Spreading Trail Magic among travellers has been a tradition in the outdoor community
+                    for decades. See how Trail Magic can play a role in your life!
                 </p>
                 <div className="signup-buttons">
                     <Routes>
