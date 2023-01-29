@@ -41,10 +41,10 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-
+{/* 
       <div className="web-container">
         <TrailMap trailGeoJSON={appalachian}></TrailMap>
-      </div>
+      </div> */}
 
     </div>
   );

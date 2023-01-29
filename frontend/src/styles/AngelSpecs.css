@@ -1,3 +1,9 @@
+.map-container {
+  position: relative;
+  height: 400px;
+  width: 400px;
+}
+
 .Dropdown-root {
     width: 136px;
     height: 33px;

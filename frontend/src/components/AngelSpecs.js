@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Dropdown from 'react-dropdown'
 import { useNavigate } from 'react-router-dom'
-import '../styles/Dropdown.css'
+import '../styles/AngelSpecs.css'
+import appalachian from '../data/appalachian.geojson'
+import TrailMap from './TrailMap'
 
 // Hard coded but should be passed in as parameter
 const trailOptions = ["Appalachian Trail"]
@@ -26,7 +28,18 @@ export default function AngelSpecs() {
             <Dropdown options={trailOptions} value={selectedTrail} onChange={(e) => {
                 setSelectedTrail(e.value);
       }}/>
-            <button type="submit" className="submit-angel-specs"></button>
+      <div map-wrapper>
+        <TrailMap trailGeoJSON={appalachian} addMarkerEnabled={true}></TrailMap>
+      </div>
+      <div className="magic-specs-wrapper">
+        <h3>Double click on your station!</h3>
+        <h3>or Enter your coordinates:</h3>
+        <input type="number" className="lat-input" placeholder='Latitude'>
+        </input>
+        <input type="number" classname="lon-input" placeholder="Longitude"></input>
+      </div>
+            <button type="submit" className="submit-angel-specs">Submit</button>
+
             </form>
         </div>
 

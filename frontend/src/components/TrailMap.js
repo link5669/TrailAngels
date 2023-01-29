@@ -1,4 +1,4 @@
-import mapboxgl from 'mapbox-gl';
+import mapboxgl, { Marker } from 'mapbox-gl';
 import { myKey } from '../private/key';
 import { useRef, useEffect, useState } from 'react'
 import '../styles/TrailMap.css'
@@ -42,6 +42,13 @@ export default function GenerateMap(props) {
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
     });
+
+    let marker = new Marker()
+    if (props.addMarkerEnabled) {
+      map.current.on('dblclick', (e) => {
+        marker.setLngLat(e.lngLat).addTo(map.current);
+      })
+    }
     getAll().then((response) => {
       loadMarkers(response)
     })
