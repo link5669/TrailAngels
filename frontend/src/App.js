@@ -43,12 +43,9 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-
       <div className="web-container">
         <TrailMap trailGeoJSON={appalachian} ref={filterRef}></TrailMap>
-        <button onClick={() => filterRef.current.toggleVisibility("firstAid", true)}>test</button>
       </div>
-
     </div>
   );
 }
