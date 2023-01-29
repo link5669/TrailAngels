@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import '../styles/AngelSpecs.css'
 import appalachian from '../data/appalachian.geojson'
 import TrailMap from './TrailMap'
-import {create} from '../services/locations'
+import { create } from '../services/locations'
 
 // Hard coded but should be passed in as parameter
 const trailOptions = ["Appalachian Trail"]
@@ -17,14 +17,15 @@ export default function AngelSpecs() {
         navigate(path);
     }
     const [selectedTrail, setSelectedTrail] = useState('Trail')
- 
+
     function handleSubmit(e) {
         e.preventDefault();
-        create({userID: window.localStorage.getItem('loggedUser'), type: "Feature", geometry: {type: "Point", coordinates: []}, properties: {title: "Angel Station", description: "Angel Station", type: "firstAid"}})
+        create({ userID: window.localStorage.getItem('loggedUser'), type: "Feature", geometry: { type: "Point", coordinates: [] }, properties: { title: "Angel Station", description: "Angel Station", type: "firstAid" } })
         routeChange()
     }
 
     return (
+        <>
         <Dropdown options={trailOptions} value={selectedTrail} onChange={(e) => {
                     setSelectedTrail(e.value);
                 }} />
@@ -39,11 +40,9 @@ export default function AngelSpecs() {
                     <input type="number" classname="lon-input" placeholder="Longitude"></input>
                 </div>
                 <button type="submit" className="submit-angel-specs">Submit</button>
-      </div>
             <button type="submit" className="submit-angel-specs">Submit</button>
-
-            </form>
-        </div>
+            </>
+        // </div>
 
     )
 }
