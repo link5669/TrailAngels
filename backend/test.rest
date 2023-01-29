@@ -6,8 +6,13 @@ Content-Type: application/json
   "geometry": {
     "type": "Point",
     "coordinates": {
-        "latitude": "41.8261716", 
-        "longitude": "-71.4073375"
+        "longitude": "41.8261716", 
+        "latitude": "-71.4073375"
     }
+  },
+  "properties": {
+    "title": "Brown University",
+    "description": "First Aid",
+    "type": "firstAid"
   }
 }

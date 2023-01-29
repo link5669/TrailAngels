@@ -8,19 +8,23 @@ import { create } from '../services/locations'
 
 // Hard coded but should be passed in as parameter
 const trailOptions = ["Appalachian Trail"]
+const typeOptions = ["Food/Water", "Transportation", "Shelter", "First Aid"]
 
 export default function AngelSpecs() {
-
+    const [longitude, setLongitude] = useState("");
+    const [latitude, setLatitude] = useState("");
     let navigate = useNavigate();
     const routeChange = () => {
         let path = `/angel-signup`;
         navigate(path);
     }
     const [selectedTrail, setSelectedTrail] = useState('Trail')
+    const [selectedType, setSelectedType] = useState('Type')
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        create({ userID: window.localStorage.getItem('loggedUser'), type: "Feature", geometry: { type: "Point", coordinates: [] }, properties: { title: "Angel Station", description: "Angel Station", type: "firstAid" } })
+    const submit = () => {
+        let newObj = { userID: window.localStorage.getItem('loggedUser'), type: "Feature", geometry: { type: "Point", coordinates: {longitude: longitude, latitude: latitude} }, properties: { title: "Angel Station", description: "Angel Station", type: "firstAid" } }
+        console.log(newObj)
+        create(newObj)
         routeChange()
     }
 
@@ -29,20 +33,21 @@ export default function AngelSpecs() {
         <Dropdown options={trailOptions} value={selectedTrail} onChange={(e) => {
                     setSelectedTrail(e.value);
                 }} />
+                 <Dropdown options={typeOptions} value={selectedType} onChange={(e) => {
+                    setSelectedType(e.value);
+                }} />
                 <div map-wrapper>
                     <TrailMap trailGeoJSON={appalachian} addMarkerEnabled={true}></TrailMap>
                 </div>
                 <div className="magic-specs-wrapper">
                     <h3>Double click on your station!</h3>
                     <h3>or Enter your coordinates:</h3>
-                    <input type="number" className="lat-input" placeholder='Latitude'>
+                    <input onChange={(e) => setLongitude(e.target.value)} type="number" className="lat-input" placeholder='Longitude'>
                     </input>
-                    <input type="number" classname="lon-input" placeholder="Longitude"></input>
+                    <input onChange={(e) => setLatitude(e.target.value)} type="number" classname="lon-input" placeholder="Latitude"></input>
                 </div>
-                <button type="submit" className="submit-angel-specs">Submit</button>
-            <button type="submit" className="submit-angel-specs">Submit</button>
+                <button onClick={() => submit()} type="submit" className="submit-angel-specs">Submit</button>
             </>
-        // </div>
 
     )
 }

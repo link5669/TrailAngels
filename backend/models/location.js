@@ -25,6 +25,17 @@ const locationSchema = new mongoose.Schema({
         type: String
       }
     }
+  },
+  properties: {
+    title: {
+      type: String
+    },
+    description: {
+      type: String
+    },
+    type: {
+      type: String
+    }
   }
 })
 

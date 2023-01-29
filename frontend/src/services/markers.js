@@ -4,12 +4,15 @@ const baseUrl = 'http://localhost:3003/api'
 const getAll = () => {
   const request = axios.get(`${baseUrl}/locations`)
   return request.then(response => {
+    console.log(response)
     const data = response.data
     const geojson = {
         type: 'FeatureCollection',
         features: []
     }
+    console.log(data,"alksjd")
     for (let i = 0; i < data.length; i++) {
+      console.log(data[i])
         geojson.features.push({
             type: 'Feature',
             geometry: {

@@ -20,7 +20,7 @@ const Home = () => {
                 <h1>Feel the spark on your next journey</h1>
                 <p>
                     <strong>Trail Angels</strong> are volunteers who go above and beyond to make life easier for hikers. Spending
-                    weeks or months on a trail can be a lot to bear. Luckily, Trail Angels are there to spread <strong>Trail Magic</strong>: 
+                    weeks or months on a trail can be a lot to bear. Luckily, Trail Angels are there to spread <strong>Trail Magic</strong>:
                     food, rides, shelter, and more! Anyone can be a Trail Angel regardless
                     of backpacking exprience.
                     <br></br>
