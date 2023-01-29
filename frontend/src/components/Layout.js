@@ -2,6 +2,8 @@ import { Outlet, Link } from "react-router-dom";
 
 import '../styles/Layout.css'
 
+import { getUsername } from '../services/users'
+
 const Layout = () => {
     let username
     if (window.localStorage.getItem('loggedUser') != null) {

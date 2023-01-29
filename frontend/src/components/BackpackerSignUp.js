@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
-import create from '../services/users'
 import { useNavigate } from 'react-router-dom'
+import { create } from '../services/users'
 
 export default function AngelSignUp() {
 
@@ -72,9 +72,7 @@ export default function AngelSignUp() {
                 onChange={(e) => { setConfirmPass(e.target.value) }}
             />
             <button type="submit" className="submit-angel-signup">
-                <div>
-                    <button type="submit">Submit</button>
-                </div>            Submit
+                Submit
             </button>
         </form>
     )

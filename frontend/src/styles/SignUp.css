@@ -6,9 +6,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .signup li {
+    display: flex;
+    flex-direction: column;
     background-color: var(--neutral200);
     padding: 5em;
 }

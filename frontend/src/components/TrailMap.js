@@ -18,7 +18,7 @@ const GenerateMap = forwardRef((props, ref) => {
   const [lng, setLng] = useState(-71.4025);
   const [lat, setLat] = useState(41.8268);
   const [zoom, setZoom] = useState(15);
-  
+
   const [markers, setMarkers] = useState([])
   let markerArr = []
 
@@ -115,10 +115,10 @@ const GenerateMap = forwardRef((props, ref) => {
     })
   }
 
-      /**
-       * Helper method for loading angel markers onto the map
-       */
-      const loadMarkers = (markers) => {
+  /**
+   * Helper method for loading angel markers onto the map
+   */
+  const loadMarkers = (markers) => {
     markers = markers
     // create a marker for each feature in the angel location geoJSON
     for (const feature of markers) {
@@ -132,20 +132,19 @@ const GenerateMap = forwardRef((props, ref) => {
           new mapboxgl.Popup({ offset: 25 })
             .setHTML(
               `<h3>${feature.properties.title}</h3><p>${feature.properties.description}</p>`
-              )
             )
-            .addTo(map.current)
-      markerArr.push({marker: marker, type: feature.properties.type})
+        )
+        .addTo(map.current)
+      markerArr.push({ marker: marker, type: feature.properties.type })
       console.log(markerArr)
-        }
-      }
+    }
+  }
 
   return (
     <div>
       <div ref={mapContainer} className="map-container" />
     </div>
   );
-}
 })
 
 export default GenerateMap;
