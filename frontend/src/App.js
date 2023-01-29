@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import TrailMap from './components/TrailMap'
 import appalachian from './data/appalachian.geojson'
@@ -9,14 +9,21 @@ import Home from './components/Home.js'
 import Layout from './components/Layout.js'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
+import Login from './components/Login.js'
+import { useState } from 'react'
+
 function App() {
-  console.log("rendering App")
+  const [token, setToken] = useState();
+  // console.log("rendering App")
+  // if (!token) {
+  //   return <Login setToken={setToken} />
+  // }
   return (
     <div className="App">
       <h1>Trail Magic</h1>
 
 
-{/* 
+
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Layout />}>
@@ -25,7 +32,7 @@ function App() {
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
 
       <div className="web-container">
         <TrailMap trailGeoJSON={appalachian}></TrailMap>

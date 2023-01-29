@@ -1,3 +1,15 @@
 .hero-section {
-    background-color: green;
+    background-image: url('../../public/placeholder-hero-image.jpg');
+    display: flex;
+}
+
+.section-column-1 {
+    width: 50%;
+}
+
+.section-column {
+    width: 40%;
+    background-color: white;
+    color: black;
+    padding: 12% 5%;
 }
