@@ -20,14 +20,14 @@ const Home = () => {
                     officia deserunt mollit anim id est laborum.
                 </p>
                 <div className="signup-buttons">
-                    {/* <BrowserRouter>
+                    
                         <Routes>
                             <Route path="/" element={<SignUp />}>
                                 <Route index element={<SignUp />} />
                                 <Route path="backpacker-signup" element={<Login />} />
                             </Route>
                         </Routes>
-                    </BrowserRouter> */}
+                    
                 </div>
             </div>
 
