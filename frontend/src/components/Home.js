@@ -1,6 +1,6 @@
 import '../styles/Home.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './Login.js'
+import AngelSignUp from './AngelSignUp.js'
 import SignUp from './SignUp.js'
 
 const Home = () => {
@@ -20,11 +20,11 @@ const Home = () => {
                     officia deserunt mollit anim id est laborum.
                 </p>
                 <div className="signup-buttons">
-                    
+            
                         <Routes>
                             <Route path="/" element={<SignUp />}>
                                 <Route index element={<SignUp />} />
-                                <Route path="backpacker-signup" element={<Login />} />
+                                <Route path="angel-signup" element={<AngelSignUp />} />
                             </Route>
                         </Routes>
                     

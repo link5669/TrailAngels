@@ -7,6 +7,8 @@ import Dashboard from './components/Dashboard.js'
 import NoPage from './components/NoPage.js'
 import Home from './components/Home.js'
 import Layout from './components/Layout.js'
+import AngelSignUp from './components/AngelSignUp.js'
+
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import Login from './components/Login.js'
@@ -29,6 +31,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="dashboard" element={<Dashboard />} />
+            <Route path="angel-signup" element={<AngelSignUp />} />
             <Route path="*" element={<NoPage />} />
           </Route>
         </Routes>

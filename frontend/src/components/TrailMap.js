@@ -83,7 +83,7 @@ export default function GenerateMap(props) {
           console.log("FEATURE")
           console.log(feature)
           const el = document.createElement('div');
-          el.className= `marker-${properties.resource_type}`;
+          el.className= `marker`;
           new mapboxgl.Marker(el)
             .setLngLat(feature.geometry.coordinates)
             .setPopup(
