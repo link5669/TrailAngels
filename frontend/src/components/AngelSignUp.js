@@ -1,5 +1,6 @@
 
 import React, {useState} from 'react'
+import create from '../services/users'
 
 export default function AngelSignUp() {
 
@@ -11,13 +12,14 @@ export default function AngelSignUp() {
     const [isSeasonal, setIsSeasonal] = useState(null)
 
     function handleSubmit(e) {
+        e.preventDefault();
         if (firstName != "" 
             && lastName != ""
             && email != ""
             && pass != ""
-            && pass == confirmPass
-            && isSeasonal != null ) {
-            e.preventDefault();
+            && pass == confirmPass) {
+                console.log("aa")
+            create({username: email, password: pass})
             //route to next page
         }
     }
